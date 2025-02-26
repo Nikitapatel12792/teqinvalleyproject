@@ -1,6 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <!-- Required for accessing the gallery on Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
     <application
-        android:label="teqinvalleyproject"
+        android:label="BrandiWave"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

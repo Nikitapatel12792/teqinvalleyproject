@@ -1,4 +1,4 @@
-package com.app.teqin.teqinvalleyproject
+package com.app.brandiwave
 
 import io.flutter.embedding.android.FlutterActivity
 
