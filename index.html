@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      const url = new URL(window.location.href);
+      const code = url.searchParams.get('code');
+      if (code) {
+        window.location.href = `myapp://callback?code=${code}`;
+      } else {
+        document.body.innerText = "No code found.";
+      }
+    </script>
+  </head>
+  <body>
+    Redirecting to app...
+  </body>
+</html>
