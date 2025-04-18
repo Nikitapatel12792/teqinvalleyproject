@@ -14,15 +14,19 @@
     const error = params.get('error');
     const resultDiv = document.getElementById('result');
 
+    // Display the full redirect URL
+    const fullUrl = window.location.href;
+    resultDiv.innerText = `Full URL: ${fullUrl}\n`;
+
     if (code) {
-      resultDiv.innerText = `✅ Authorization Code:\n${code}`;
+      resultDiv.innerText += `✅ Authorization Code:\n${code}`;
       
       // Redirect to your app using deep link
       window.location.href = `snaplogin://auth/callback?code=${code}`;
     } else if (error) {
-      resultDiv.innerText = `❌ Error: ${error}`;
+      resultDiv.innerText += `❌ Error: ${error}`;
     } else {
-      resultDiv.innerText = "⚠️ No code or error found in URL.";
+      resultDiv.innerText += "⚠️ No code or error found in URL.";
     }
   </script>
 </body>
