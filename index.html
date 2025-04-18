@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script>
-      const url = new URL(window.location.href);
-      const code = url.searchParams.get('code');
-      if (code) {
-        window.location.href = `myapp://callback?code=${code}`;
-      } else {
-        document.body.innerText = "No code found.";
-      }
-    </script>
-  </head>
-  <body>
-    Redirecting to app...
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snapchat Auth Redirect</title>
+</head>
+<body>
+  <h2>Snapchat Login Redirect</h2>
+  <div id="result">Waiting for response...</div>
+
+  <script>
+    // Parse the URL for ?code= or ?error=
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const error = params.get('error');
+    const resultDiv = document.getElementById('result');
+
+    if (code) {
+      resultDiv.innerText = `✅ Authorization Code:\n${code}`;
+
+      // Optional: Redirect to your Flutter app with deep link
+      // window.location.href = `myapp://callback?code=${code}`;
+    } else if (error) {
+      resultDiv.innerText = `❌ Error: ${error}`;
+    } else {
+      resultDiv.innerText = "⚠️ No code or error found in URL.";
+    }
+  </script>
+</body>
 </html>
