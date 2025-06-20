@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Redirecting...</title>
-    <script>
-      window.onload = function () {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get("code");
-        const state = params.get("state");
-
-        if (code) {
-          // Deep link back to the app with code
-          window.location.href = `com.app.brandiwave.brandiwave:/oauth2redirect?code=${code}&state=${state}`;
-        } else {
-          document.body.innerText = "❌ No code found.";
-        }
-      };
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to app...</p>
-  </body>
+<head>
+  <title>Redirecting...</title>
+  <script>
+    // Parse the code from query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      // Redirect back to your app with the code
+      window.location.href = 'com.app.brandiwave.brandiwave:/oauth2redirect?code=' + code;
+    } else {
+      document.body.innerHTML = "<h3>No code found</h3>";
+    }
+  </script>
+</head>
+<body>
+  <h3>Redirecting...</h3>
+</body>
 </html>
