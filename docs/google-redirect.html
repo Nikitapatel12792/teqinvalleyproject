@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Redirecting...</title>
+    <title>Google Auth Redirect</title>
     <script type="text/javascript">
       window.onload = function () {
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
 
         if (code) {
-          // Show the code on the page
-          document.getElementById("message").innerText = "✅ Code: " + code;
+          // Show the code on the screen
+          document.getElementById("code-display").innerText = "✅ Authorization Code: " + code;
 
-          // Also redirect to the app
-          const redirectUrl = "com.app.brandiwave.brandiwave://oauth2redirect?code=" + code;
-
-          // Give a second to show before redirecting
+          // Optional: Deep link back to your app after 2 seconds
           setTimeout(() => {
+            const redirectUrl = "com.app.brandiwave.brandiwave://oauth2redirect?code=" + code;
             window.location.href = redirectUrl;
-          }, 1500);
+          }, 2000);
         } else {
-          document.getElementById("message").innerText = "❌ No code found in URL.";
+          document.getElementById("code-display").innerText = "❌ No code found in URL.";
         }
       };
     </script>
   </head>
   <body>
-    <p id="message">🔄 Redirecting to the app...</p>
+    <h2>🔐 Google Login Result</h2>
+    <p id="code-display">Waiting for code...</p>
   </body>
 </html>
