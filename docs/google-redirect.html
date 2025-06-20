@@ -8,22 +8,14 @@
         const code = params.get("code");
 
         if (code) {
-          // Show the code on the screen
-          document.getElementById("code-display").innerText = "✅ Authorization Code: " + code;
-
-          // Optional: Deep link back to your app after 2 seconds
-          setTimeout(() => {
-            const redirectUrl = "com.app.brandiwave.brandiwave://oauth2redirect?code=" + code;
-            window.location.href = redirectUrl;
-          }, 2000);
-        } else {
-          document.getElementById("code-display").innerText = "❌ No code found in URL.";
+          // Auto-redirect back to the app
+          const redirectUrl = "com.app.brandiwave.brandiwave://oauth2redirect?code=" + code;
+          window.location.href = redirectUrl;
         }
       };
     </script>
   </head>
   <body>
-    <h2>🔐 Google Login Result</h2>
-    <p id="code-display">Waiting for code...</p>
+    <p>🔄 Redirecting to app...</p>
   </body>
 </html>
