@@ -8,8 +8,8 @@
         const code = params.get("code");
 
         if (code) {
-          // Auto-redirect back to the app
-          const redirectUrl = "com.app.brandiwave.brandiwave://oauth2redirect?code=" + code;
+          // Use "google" as the host for Google OAuth redirect
+          const redirectUrl = "com.app.brandiwave.brandiwave://google?code=" + code;
           window.location.href = redirectUrl;
         }
       };
