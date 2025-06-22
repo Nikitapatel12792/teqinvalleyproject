@@ -1,1 +1,24 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram Redirect</title>
+    <script type="text/javascript">
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+
+        if (code) {
+          // Redirect to your mobile app using custom scheme
+          const redirectUrl = "com.app.brandiwave.brandiwave://instagram?code=" + code;
+          window.location.href = redirectUrl;
+        } else {
+          document.body.innerHTML = "<p>❌ Authorization code not found.</p>";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <p>🔄 Redirecting to app...</p>
+  </body>
+</html>
