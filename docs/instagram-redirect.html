@@ -10,7 +10,7 @@
 
         if (code) {
           // Redirect to your mobile app using custom scheme
-          const redirectUrl = "com.app.brandiwave.brandiwave://instagram?code=" + code;
+          const redirectUrl = "com.app.brandiwave.brandiwave://facebook?code=" + code;
           window.location.href = redirectUrl;
         } else {
           document.body.innerHTML = "<p>❌ Authorization code not found.</p>";
