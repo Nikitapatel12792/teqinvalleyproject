@@ -20,7 +20,7 @@
   </body>
 </html>
  -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Payment Redirect</title>
@@ -29,16 +29,17 @@
   <h1>Processing Payment...</h1>
 
   <script>
-    // Get query parameters from URL
+    // Read query parameters from EdfaPay redirect
     const params = new URLSearchParams(window.location.search);
-    const status = params.get("status");
-    const orderId = params.get("order_id");
+    const status = params.get("status") || "failed"; // fallback if null
+    const orderId = params.get("order_id") || "";
 
-    // Construct a custom URL scheme to send back to Flutter
-    const appUrl = `myapp://payment_callback?status=${status}&order_id=${orderId}`;
+    // Optional: display on the HTML page for debugging
+    document.body.innerHTML += `<p>Status: ${status}</p>`;
+    document.body.innerHTML += `<p>Order ID: ${orderId}</p>`;
 
-    // Redirect to Flutter app
-    window.location.href = appUrl;
+    // Forward to Flutter via custom scheme
+    window.location.href = `myapp://payment_callback?status=${status}&order_id=${orderId}`;
   </script>
 </body>
 </html>
